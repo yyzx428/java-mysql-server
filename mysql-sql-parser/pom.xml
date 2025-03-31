@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.yyzx.mysql</groupId>
+        <artifactId>java-mysql-server</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+
+    <artifactId>mysql-sql-parser</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yyzx.mysql</groupId>
+            <artifactId>mysql-sql-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+
+    <profiles>
+        <profile>
+            <id>build-antlr4</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.antlr</groupId>
+                        <artifactId>antlr4-maven-plugin</artifactId>
+                        <version>4.13.2</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>antlr4</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <sourceDirectory>src/main/resources/antlr4</sourceDirectory> <!-- 语法文件目录 -->
+                            <outputDirectory>src/main/java/org/yyzx/mysql/parser/antlr4
+                            </outputDirectory>  <!-- 生成代码目录 -->
+                            <arguments>
+                                <argument>-package</argument>
+                                <argument>org.yyzx.mysql.parser.antlr4</argument>
+                                <argument>-visitor</argument> <!-- 生成 Visitor 模式代码 -->
+                                <argument>-listener</argument> <!-- 生成 Listener 模式代码 -->
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+        </profile>
+    </profiles>
+
+</project>

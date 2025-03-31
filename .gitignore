@@ -1,11 +1,27 @@
+#git
+.git
+
+#idaa
+.idea
+.project
+*.iml
+
+#vscode
+.vscode
+
 # Compiled class file
 *.class
+.classpath
 
 # Log file
+logs
 *.log
 
 # BlueJ files
 *.ctxt
+
+# all targets
+target
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
