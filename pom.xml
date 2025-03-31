@@ -11,6 +11,9 @@
     <modules>
         <module>mysql-dependencies-bom</module>
         <module>sql</module>
+        <module>server</module>
+        <module>storage</module>
+        <module>handler</module>
     </modules>
 
 
