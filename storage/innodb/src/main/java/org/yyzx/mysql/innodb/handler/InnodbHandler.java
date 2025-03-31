@@ -1,4 +1,4 @@
-package org.yyzx.mysql.handler.innodb;
+package org.yyzx.mysql.innodb.handler;
 
 import org.yyzx.mysql.handler.Handler;
 
