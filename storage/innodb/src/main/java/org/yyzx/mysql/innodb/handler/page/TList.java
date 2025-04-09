@@ -4,23 +4,31 @@ public class TList {
 
     private int length;
 
-    private Point first;
-
-    private Point last;
+    private Node node;
 
     public int getLength() {
         return length;
     }
 
-    public Point getFirst() {
-        return first;
+    public Node getNode() {
+        return node;
     }
 
-    public Point getLast() {
-        return last;
+    public void setLength(int length) {
+        this.length = length;
     }
 
-    private static final class Point{
+    public void setNode(Node node) {
+        this.node = node;
+    }
+
+    public static final class Node{
+        private Point prev;
+
+        private Point next;
+    }
+
+    public static final class Point {
         private final int pageNo;
 
         private final short offset;

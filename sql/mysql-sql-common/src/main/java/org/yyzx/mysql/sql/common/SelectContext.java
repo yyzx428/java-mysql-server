@@ -3,9 +3,7 @@ package org.yyzx.mysql.sql.common;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LEX {
-
-    private String sqlType;
+public class SelectContext {
 
     private List<Item> selectItem = new LinkedList<>();
 
@@ -13,36 +11,32 @@ public class LEX {
 
     private Item where;
 
-    public String getSqlType() {
-        return sqlType;
-    }
-
-    public void setSqlType(String sqlType) {
-        this.sqlType = sqlType;
-    }
-
     public List<Item> getSelectItem() {
         return selectItem;
+    }
+
+    public void setSelectItem(List<Item> selectItem) {
+        this.selectItem = selectItem;
     }
 
     public List<Table> getTables() {
         return tables;
     }
 
-    public void setWhere(Item where) {
-        this.where = where;
+    public void setTables(List<Table> tables) {
+        this.tables = tables;
     }
 
     public Item getWhere() {
         return where;
     }
 
-    public void addField(Item item) {
-        selectItem.add(item);
+    public void setWhere(Item where) {
+        this.where = where;
     }
 
     public void addAllField(List<Item> items) {
-        selectItem.addAll(items);
+        this.selectItem.addAll(items);
     }
 
     public void addTables(List<Table> tables) {

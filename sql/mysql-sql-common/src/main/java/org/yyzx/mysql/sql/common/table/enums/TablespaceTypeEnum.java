@@ -1,4 +1,4 @@
-package org.yyzx.mysql.innodb.handler.table.enums;
+package org.yyzx.mysql.sql.common.table.enums;
 
 public enum TablespaceTypeEnum {
 

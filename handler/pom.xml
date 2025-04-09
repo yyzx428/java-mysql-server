@@ -6,15 +6,17 @@
     <parent>
         <groupId>org.yyzx.mysql</groupId>
         <artifactId>java-mysql-server</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>handler</artifactId>
 
-    <properties>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.yyzx.mysql</groupId>
+            <artifactId>mysql-sql-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

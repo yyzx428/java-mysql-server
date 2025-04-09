@@ -6,7 +6,8 @@ import org.yyzx.mysql.parser.listener.select.ProjectionItemListener;
 import org.yyzx.mysql.parser.visitor.CondVisitor;
 import org.yyzx.mysql.parser.visitor.TableSourcesVisitor;
 import org.yyzx.mysql.sql.common.Item;
-import org.yyzx.mysql.sql.common.LEX;
+import org.yyzx.mysql.sql.common.thread.LEX;
+import org.yyzx.mysql.sql.common.enums.SqlTypeEnum;
 
 public class SqlListener extends MySqlParserBaseListener {
     private final LEX lex;
@@ -39,7 +40,7 @@ public class SqlListener extends MySqlParserBaseListener {
 
     @Override
     public void enterSimpleSelect(MySqlParser.SimpleSelectContext ctx) {
-        lex.setSqlType("SELECT");
+        lex.setSqlType(SqlTypeEnum.SELECT);
         ctx.querySpecification().enterRule(this);
     }
 
@@ -47,15 +48,15 @@ public class SqlListener extends MySqlParserBaseListener {
     public void enterQuerySpecification(MySqlParser.QuerySpecificationContext ctx) {
         ProjectionItemListener projection = new ProjectionItemListener();
         ctx.selectElements().enterRule(projection);
-        lex.addAllField(projection.getItems());
+        lex.getSelectContext().addAllField(projection.getItems());
 
         ctx.fromClause().enterRule(this);
     }
 
     @Override
     public void enterFromClause(MySqlParser.FromClauseContext ctx) {
-        lex.addTables(ctx.tableSources().accept(new TableSourcesVisitor()));
+        lex.getSelectContext().addTables(ctx.tableSources().accept(new TableSourcesVisitor()));
         Item cond = ctx.expression().accept(new CondVisitor());
-        lex.setWhere(cond);
+        lex.getSelectContext().setWhere(cond);
     }
 }

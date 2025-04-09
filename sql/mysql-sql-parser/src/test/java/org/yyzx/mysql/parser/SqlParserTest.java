@@ -1,6 +1,6 @@
 package org.yyzx.mysql.parser;
 
-import org.yyzx.mysql.sql.common.LEX;
+import org.yyzx.mysql.sql.common.thread.LEX;
 
 public class SqlParserTest {
 

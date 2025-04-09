@@ -6,9 +6,16 @@ import java.util.List;
 
 public class Tablespace {
 
-    private String tableName;
+    private long spaceNo;
 
     private List<DataFile> files;
 
 
+    public void setSpaceNo(int spaceNo) {
+
+    }
+
+    public DataFile getFirstDataFile() {
+        return files.get(0);
+    }
 }

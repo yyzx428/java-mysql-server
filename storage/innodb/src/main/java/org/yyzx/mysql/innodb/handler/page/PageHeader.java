@@ -1,9 +1,12 @@
 package org.yyzx.mysql.innodb.handler.page;
 
-public class PageHeader {
-    private final int spaceNo;
+import java.nio.ByteBuffer;
 
-    private final int pageNo;
+public class PageHeader implements SerializablePage {
+
+    private int spaceNo;
+
+    private int pageNo;
 
     private int prevPageNo;
 
@@ -16,11 +19,6 @@ public class PageHeader {
     private long flushLsn;
 
     private int flags;
-
-    public PageHeader(int spaceNo, int pageNo) {
-        this.spaceNo = spaceNo;
-        this.pageNo = pageNo;
-    }
 
     public int getSpaceNo() {
         return spaceNo;
@@ -76,5 +74,15 @@ public class PageHeader {
 
     public void setFlags(short flags) {
         this.flags = flags;
+    }
+
+    @Override
+    public int write(ByteBuffer stream) {
+        return 0;
+    }
+
+    @Override
+    public int read(ByteBuffer stream) {
+        return 0;
     }
 }
